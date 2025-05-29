@@ -30,7 +30,7 @@ This application is a web-based interview question generator that creates tailor
 ## Technologies Used
 
 - **Client:** React, TypeScript, Tailwind CSS, react-icons, jspdf, html2canvas-pro
-- **Server:** Node.js, Express.js, TypeScript (Based on file structure seen)
+- **Server:** Node.js, Express.js, TypeScript
 
 ## Setup and Installation
 
@@ -41,13 +41,11 @@ This application is a web-based interview question generator that creates tailor
     cd Asif-Interview-Questions-Generator
     ```
 
-2.  **Install dependencies for the server and set up environment variables:**
+2.  Install dependencies for the client:
 
     ```bash
-    cd server
+    cd client
     npm install # or yarn install
-    cp .env.sample .env
-    # Open .env and add your OpenAI API key: OPENAI_API_KEY=your_api_key
     cd ..
     ```
 
@@ -59,11 +57,13 @@ This application is a web-based interview question generator that creates tailor
     docker run --name redis-interview -d -p 6379:6379 redis
     ```
 
-4.  Install dependencies for the client:
+4.  Install dependencies for the server and set up environment variables:
 
     ```bash
-    cd client
+    cd server
     npm install # or yarn install
+    cp .env.sample .env
+    # Open .env and add your OpenAI API key: OPENAI_API_KEY=your_api_key
     cd ..
     ```
 
@@ -73,7 +73,8 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd server
-    npm start # or yarn start
+    npm run dev # or pnpm dev
+    npm run worker
     cd ..
     ```
 
@@ -81,12 +82,8 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd client
-    npm start # or yarn start
+    npm run dev # or pnpm dev
     cd ..
     ```
 
-3.  Open your browser and navigate to the client application (usually `http://localhost:3000`).
-
-## Contributing
-
-If you'd like to contribute, please fork the repository and create a pull request.
+3.  Open your browser and navigate to the client application (usually `http://localhost:5173`).
