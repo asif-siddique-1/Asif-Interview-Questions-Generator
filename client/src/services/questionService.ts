@@ -1,4 +1,9 @@
 import type { ApiResponse, Question } from "../types";
+import {
+  API_BASE_URL,
+  QUESTIONS_GENERATE_ENDPOINT,
+  QUESTIONS_STATUS_ENDPOINT,
+} from "../utils/constants";
 
 const POLLING_INTERVAL = 2000; // 2 seconds
 const MAX_POLLING_ATTEMPTS = 30; // Max 1 minute of polling
@@ -20,7 +25,7 @@ export const pollJobStatus = async (
 
   try {
     const response = await fetch(
-      `http://localhost:3001/api/v1/questions/status/${jobId}`
+      `${API_BASE_URL}${QUESTIONS_STATUS_ENDPOINT}/${jobId}`
     );
     const data: ApiResponse = await response.json();
 
@@ -50,9 +55,15 @@ export const pollJobStatus = async (
     } else {
       throw new Error(data.message || "Failed to generate questions");
     }
-  } catch (err) {
+  } catch (err: unknown) {
     console.error("Polling error:", err);
-    setError("Failed to check generation status. Please try again.");
+    if (err instanceof Error) {
+      setError(
+        "Failed to check generation status. Please try again." + err.message
+      );
+    } else {
+      setError("Failed to check generation status. Please try aagain.");
+    }
     setIsLoading(false);
   }
 };
@@ -75,7 +86,7 @@ export const generateQuestions = async (
 
   try {
     const response = await fetch(
-      "http://localhost:3001/api/v1/questions/generate",
+      `${API_BASE_URL}${QUESTIONS_GENERATE_ENDPOINT}`,
       {
         method: "POST",
         headers: {
@@ -91,7 +102,9 @@ export const generateQuestions = async (
     );
 
     if (!response.ok) {
-      throw new Error("Failed to start question generation");
+      throw new Error(
+        `Failed to start question generation: ${response.statusText}`
+      );
     }
 
     const data: ApiResponse = await response.json();
@@ -113,11 +126,15 @@ export const generateQuestions = async (
         1000
       );
     } else {
-      throw new Error("Invalid response from server");
+      throw new Error(data.message || "Invalid response from server");
     }
-  } catch (err) {
+  } catch (err: unknown) {
     console.error("Generation error:", err);
-    setError("Failed to generate questions. Please try again.");
+    if (err instanceof Error) {
+      setError("Failed to generate questions. Please try again." + err.message);
+    } else {
+      setError("Failed to generate questions. Please try again.");
+    }
     setIsLoading(false);
   }
 };

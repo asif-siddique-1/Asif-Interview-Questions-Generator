@@ -1,56 +1,74 @@
-Welcome to our technical assessment repository! This collection of challenges is designed to evaluate your ability to build AI-powered recruitment tools that solve real-world problems.
+# Interview Question Generator
 
-## Instructions
+This application is a web-based interview question generator that creates tailored interview questions based on a provided job description and desired experience level.
 
-1. Review the challenges below
-2. Choose ONE that best matches your skills and interests
-3. Fork this repository and implement your solution
-4. Submit a pull request with your completed challenge
+## Features
 
-## About Our Platform
+- Generate interview questions from a job description.
+- Specify the experience level for generated questions.
+- Select different types of questions (theoretical, coding, system design).
+- Download generated questions in JSON or PDF format.
 
-We are building an Agentic recruitment platform with specialized agents that automate key aspects of the hiring process. Our technology stack includes React, Node.js, TypeScript, and modern AI/LLM integrations.
+## Technologies Used
 
-## Challenge Options
+- **Client:** React, TypeScript, Tailwind CSS, react-icons, jspdf, html2canvas-pro
+- **Server:** Node.js, Express.js, TypeScript (Based on file structure seen)
 
-Choose ONE of the following challenges:
+## Setup and Installation
 
-### [Advanced Candidate Matching System](./candidate-matcher.md)
-Design an intelligent system that matches candidates to jobs by understanding skill equivalence, experience depth, and potential fit.
+1.  Clone the repository:
 
-### [Intelligent Resume Parser](./resume-analyzer.md)
-Build a system that extracts structured, validated data from unstructured resume content.
+    ```bash
+    git clone <repository_url>
+    cd Asif-Interview-Questions-Generator
+    ```
 
-### [Candidate Engagement Chatbot](./candidate-engagement-bot.md)
-Create a conversational agent that provides job information while qualifying candidates through natural dialogue.
+2.  **Install dependencies for the server and set up environment variables:**
 
-### [Technical Interview Question Generator](./interview-generator.md)
-Develop a tool that generates tailored technical interview questions with appropriate difficulty calibration.
+    ```bash
+    cd server
+    npm install # or yarn install
+    cp .env.sample .env
+    # Open .env and add your OpenAI API key: OPENAI_API_KEY=your_api_key
+    cd ..
+    ```
 
-## Evaluation Criteria
+3.  **Run Redis using Docker:**
 
-Regardless of which challenge you choose, we'll evaluate your submission on:
+    Make sure you have Docker installed and running. Then, run the following command from the project root:
 
-1. **Problem Solving**: How you approach and decompose a complex problem
-2. **AI Integration**: Strategic use of LLMs beyond simple prompt engineering
-3. **Code Quality**: Structure, readability, and maintainability
-4. **System Design**: Architecture decisions and technical tradeoffs
-5. **Functionality**: Effectiveness of your solution for the intended use case
+    ```bash
+    docker run --name redis-interview -d -p 6379:6379 redis
+    ```
 
-## Time Expectation
+4.  Install dependencies for the client:
 
-Each challenge is designed to take approximately 4-8 hours. We value your time and don't expect a production-ready system. Focus on demonstrating your approach and technical thinking rather than perfecting every detail.
+    ```bash
+    cd client
+    npm install # or yarn install
+    cd ..
+    ```
 
-## Submission Process
+## Running the Application
 
-1. Fork this repository
-2. Create a new branch with a descriptive name (`your-name-solution`)
-3. Implement your solution
-4. Submit a pull request with a summary of your approach
-5. Include setup instructions in your README
+1.  Start the server (adjust the command based on your server setup, e.g., using `nodemon` or `ts-node`):
 
-We're excited to see your creative solutions to these challenges!
+    ```bash
+    cd server
+    npm start # or yarn start
+    cd ..
+    ```
 
-## Questions?
+2.  Start the client development server:
 
-If you have questions about the assignment, please open an issue in this repository.
+    ```bash
+    cd client
+    npm start # or yarn start
+    cd ..
+    ```
+
+3.  Open your browser and navigate to the client application (usually `http://localhost:3000`).
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and create a pull request.
