@@ -1,4 +1,4 @@
-import { Queue } from 'bullmq';
-import { connection } from '../config/redis';
+import { Queue } from "bullmq";
+import { connection } from "../config/redis";
 
-export const questionQueue = new Queue('question-generation', { connection });
+export const questionQueue = new Queue("question-generation", { connection });

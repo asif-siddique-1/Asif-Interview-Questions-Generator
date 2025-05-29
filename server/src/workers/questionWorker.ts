@@ -1,17 +1,17 @@
-import { Worker } from 'bullmq';
-import { generateQuestions } from '../utils/generateQuestions';
-import { AppError } from '../utils/AppError';
-import { tryCatch } from '../utils/tryCatch';
-import { connection } from '../config/redis';
+import { Worker } from "bullmq";
+import { generateQuestions } from "../utils/generateQuestions";
+import { AppError } from "../utils/AppError";
+import { tryCatch } from "../utils/tryCatch";
+import { connection } from "../config/redis";
 
 new Worker(
-  'question-generation',
+  "question-generation",
   async (job) => {
     console.log(`job: ${job}`);
     const { skills, numQuestions, experienceLevel, questionTypes } = job.data;
 
     const { data: questions, error } = await tryCatch(
-      generateQuestions(skills, numQuestions, experienceLevel, questionTypes),
+      generateQuestions(skills, numQuestions, experienceLevel, questionTypes)
     );
 
     if (error) {
@@ -23,5 +23,5 @@ new Worker(
   },
   {
     connection,
-  },
+  }
 );

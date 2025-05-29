@@ -1,17 +1,17 @@
-import express from 'express';
-import { generateQuestionsController } from '../controllers/questions.controller';
-import { validate } from '../middleware/schemaValidator';
-import { generateQuestionsSchema } from '../validations/generateQuestions';
-import { getQuestionStatusController } from '../controllers/questions.controller';
+import express from "express";
+import { generateQuestionsController } from "../controllers/questions.controller";
+import { validate } from "../middleware/schemaValidator";
+import { generateQuestionsSchema } from "../validations/generateQuestions";
+import { getQuestionStatusController } from "../controllers/questions.controller";
 
 const router = express.Router();
 
 router.post(
-  '/generate',
+  "/generate",
   validate(generateQuestionsSchema),
-  generateQuestionsController,
+  generateQuestionsController
 );
 
-router.get('/status/:jobId', getQuestionStatusController);
+router.get("/status/:jobId", getQuestionStatusController);
 
 export default router;

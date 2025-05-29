@@ -2,15 +2,15 @@ export const genrateQuestionsPrompt = (
   skills: string[],
   numQuestions: number,
   experienceLevel: string,
-  questionTypes: string[] = ['Theoretical', 'Coding'],
+  questionTypes: string[] = ["Theoretical", "Coding"]
 ) => {
   return `You are an expert technical interviewer. Given the following skills: ${skills.join(
-    ', ',
+    ", "
   )}, DO NOT more than ${numQuestions} questions. Generate ${numQuestions} interview questions for ${experienceLevel} level candidates.
   
   IMPORTANT GUIDELINES:
-  1. Create questions of the following types: ${questionTypes.join(', ')}.
-     ${questionTypes.length > 1 ? `Create an equal distribution among these types.` : ''}
+  1. Create questions of the following types: ${questionTypes.join(", ")}.
+     ${questionTypes.length > 1 ? `Create an equal distribution among these types.` : ""}
   
   2. For coding challenges, include specific problems that require writing actual code, with sample inputs and expected outputs.
   
@@ -20,7 +20,7 @@ export const genrateQuestionsPrompt = (
   
   5. For each question, provide:
      - The skill it assesses
-     - Question type (${questionTypes.map((type) => `"${type}"`).join(' or ')})
+     - Question type (${questionTypes.map((type) => `"${type}"`).join(" or ")})
      - The detailed question
      - Sample input/output for coding questions
      - Evaluation criteria for assessing the candidate's answer

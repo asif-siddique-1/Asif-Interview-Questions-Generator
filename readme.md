@@ -55,7 +55,7 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd server
-    npm start # or yarn start
+    npm run dev # or yarn start
     cd ..
     ```
 
@@ -63,12 +63,8 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd client
-    npm start # or yarn start
+    npm run dev # or yarn start
     cd ..
     ```
 
-3.  Open your browser and navigate to the client application (usually `http://localhost:3000`).
-
-## Contributing
-
-If you'd like to contribute, please fork the repository and create a pull request.
+3.  Open your browser and navigate to the client application (usually `http://localhost:5173`).

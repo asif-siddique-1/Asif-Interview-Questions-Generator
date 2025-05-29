@@ -1,7 +1,7 @@
-import { openai } from '../config/openAI';
-import { AppError } from './AppError';
-import { tryCatch } from './tryCatch';
-import { extractSkillsPrompt } from './prompts/extractSkillsPrompt';
+import { openai } from "../config/openAI";
+import { AppError } from "./AppError";
+import { tryCatch } from "./tryCatch";
+import { extractSkillsPrompt } from "./prompts/extractSkillsPrompt";
 
 /**
  * Extracts technical skills from a job description using an external AI-powered skill extraction API.
@@ -9,29 +9,29 @@ import { extractSkillsPrompt } from './prompts/extractSkillsPrompt';
  * @returns A Promise that resolves to an array of extracted skill strings.
  */
 export const skillExtractor = async (
-  jobDescription: string,
+  jobDescription: string
 ): Promise<string[]> => {
   const { data, error } = await tryCatch(
     openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
+      model: "gpt-3.5-turbo",
       messages: [
-        { role: 'user', content: extractSkillsPrompt(jobDescription) },
+        { role: "user", content: extractSkillsPrompt(jobDescription) },
       ],
-    }),
+    })
   );
 
   if (error) {
     throw new AppError(error.message, 500);
   }
 
-  const skillsText = data.choices[0].message.content || '';
+  const skillsText = data.choices[0].message.content || "";
 
   if (!skillsText) {
-    throw new AppError('Failed to extract skills', 500);
+    throw new AppError("Failed to extract skills", 500);
   }
 
   return skillsText
-    .split(',')
+    .split(",")
     .map((skill: string) => skill.trim())
     .filter(Boolean);
 };

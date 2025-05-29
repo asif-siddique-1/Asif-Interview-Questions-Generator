@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from 'express';
-import { ZodSchema } from 'zod';
-import { AppError } from '../utils/AppError';
+import { NextFunction, Request, Response } from "express";
+import { ZodSchema } from "zod";
+import { AppError } from "../utils/AppError";
 
 export const validate =
   (schema: ZodSchema) => (req: Request, res: Response, next: NextFunction) => {
@@ -8,8 +8,8 @@ export const validate =
 
     if (!result.success) {
       const errors = result.error.errors
-        .map((e) => `${e.path.join('.')} is ${e.message}`)
-        .join(', ');
+        .map((e) => `${e.path.join(".")} is ${e.message}`)
+        .join(", ");
       return next(new AppError(`Validation Error: ${errors}`, 400));
     }
 

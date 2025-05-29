@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from "express";
 
 // Extend the Express Request interface
 declare global {
@@ -12,7 +12,7 @@ declare global {
 export const requestTime = (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   req.requestTime = new Date().toISOString();
   next();
