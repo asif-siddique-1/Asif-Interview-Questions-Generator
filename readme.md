@@ -9,6 +9,24 @@ This application is a web-based interview question generator that creates tailor
 - Select different types of questions (theoretical, coding, system design).
 - Download generated questions in JSON or PDF format.
 
+## Screenshots
+
+### Home Page
+
+![Home Page](assets/HomePage.png)
+
+### Question Generation Form
+
+![Question Generation Form](assets/Question-Generation-Form.png)
+
+### Generated Questions
+
+![Generated Questions](assets/Generated-Questions.png)
+
+### Options on Generated Questions
+
+![Options on Generated Questions](assets/Options-On-Generated.png)
+
 ## Technologies Used
 
 - **Client:** React, TypeScript, Tailwind CSS, react-icons, jspdf, html2canvas-pro
@@ -55,7 +73,7 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd server
-    npm run dev # or yarn start
+    npm start # or yarn start
     cd ..
     ```
 
@@ -63,8 +81,12 @@ This application is a web-based interview question generator that creates tailor
 
     ```bash
     cd client
-    npm run dev # or yarn start
+    npm start # or yarn start
     cd ..
     ```
 
-3.  Open your browser and navigate to the client application (usually `http://localhost:5173`).
+3.  Open your browser and navigate to the client application (usually `http://localhost:3000`).
+
+## Contributing
+
+If you'd like to contribute, please fork the repository and create a pull request.
