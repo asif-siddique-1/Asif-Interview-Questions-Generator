@@ -87,36 +87,6 @@ const HowItWorks: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 px-8 py-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-sm border border-gray-100 max-w-3xl mx-auto">
-            <div className="text-left sm:text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Ready to transform your hiring process?
-              </h3>
-              <p className="text-gray-600">
-                Join hundreds of companies that trust our platform
-              </p>
-            </div>
-            <button className="px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-full hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 flex items-center whitespace-nowrap">
-              Get Started Free
-              <svg
-                className="w-4 h-4 ml-2"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                ></path>
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );
