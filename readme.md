@@ -59,13 +59,15 @@ This application is a web-based interview question generator that creates tailor
 
 4.  Install dependencies for the server and set up environment variables:
 
-    ```bash
-    cd server
-    npm install # or yarn install
-    cp .env.sample .env
-    # Open .env and add your OpenAI API key: OPENAI_API_KEY=your_api_key
-    cd ..
-    ```
+        ```bash
+        cd server
+        npm install # or yarn install
+        cp .env.sample .env
+        # Open .env and add your OpenAI API key: OPENAI_API_KEY=your_api_key
+        cd ..
+        ```
+
+    > **Note:** If you don't provide an OpenAI API key in the `.env` file, the application will use dummy responses for question generation. This is useful for testing the application's functionality without consuming API credits.
 
 ## Running the Application
 
