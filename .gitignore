@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Temporary files and logs
+*.log
+.env
