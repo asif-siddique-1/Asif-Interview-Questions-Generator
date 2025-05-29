@@ -97,7 +97,7 @@ const HeroSection: React.FC = () => {
             ].map((item, index) => (
               <div
                 key={index}
-                className={`p-6 rounded-2xl border border-gray-100 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300`}
+                className={`p-6 rounded-2xl flex justify-center items-center flex-col border border-gray-100 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300`}
               >
                 <div
                   className={`w-12 h-12 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mb-4`}

@@ -7,7 +7,6 @@ import { connection } from "../config/redis";
 new Worker(
   "question-generation",
   async (job) => {
-    console.log(`job: ${job}`);
     const { skills, numQuestions, experienceLevel, questionTypes } = job.data;
 
     const { data: questions, error } = await tryCatch(
@@ -17,7 +16,6 @@ new Worker(
     if (error) {
       throw new AppError(error.message, 500);
     }
-    console.log(`questions: ${questions}`);
 
     return questions;
   },

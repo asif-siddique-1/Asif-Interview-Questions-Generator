@@ -2,6 +2,8 @@ import { AppError } from "./AppError";
 import { tryCatch } from "./tryCatch";
 import { openai } from "../config/openAI";
 import { genrateQuestionsPrompt } from "./prompts/generateQuestionsPrompt";
+import config from "../config/config";
+import { QUESTIONS } from "../data/seed";
 
 /**
  * Generates interview questions based on the provided skills, number of questions, and experience level.
@@ -18,6 +20,11 @@ export const generateQuestions = async (
 ): Promise<string[]> => {
   if (!skills || skills.length === 0) {
     throw new AppError("Skills array is required", 400);
+  }
+
+  if (!config.openAiApiKey) {
+    console.warn("Returning dummy questions as Open AI is not configured.");
+    return QUESTIONS.slice(0, numQuestions) as any[];
   }
 
   const { data, error } = await tryCatch(

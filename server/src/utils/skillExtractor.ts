@@ -2,6 +2,7 @@ import { openai } from "../config/openAI";
 import { AppError } from "./AppError";
 import { tryCatch } from "./tryCatch";
 import { extractSkillsPrompt } from "./prompts/extractSkillsPrompt";
+import config from "../config/config";
 
 /**
  * Extracts technical skills from a job description using an external AI-powered skill extraction API.
@@ -11,6 +12,9 @@ import { extractSkillsPrompt } from "./prompts/extractSkillsPrompt";
 export const skillExtractor = async (
   jobDescription: string
 ): Promise<string[]> => {
+  if (!config.openAiApiKey) {
+    return ["react", "python", "nodejs"];
+  }
   const { data, error } = await tryCatch(
     openai.chat.completions.create({
       model: "gpt-3.5-turbo",

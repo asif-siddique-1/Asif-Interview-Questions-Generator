@@ -34,6 +34,7 @@ const GeneratedQuestions: React.FC<GeneratedQuestionsProps> = ({
   questionTypes,
   questionTypeOptions,
 }) => {
+  console.log(questions[0].skill);
   return (
     <div className="space-y-8">
       <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-r-lg">
